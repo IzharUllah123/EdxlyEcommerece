@@ -60,7 +60,7 @@ export default function PortfolioPage() {
             Our <span className="text-blue-600">Work</span>
           </h1>
           <p className="text-xl text-slate-500 max-w-2xl mx-auto">
-            A collection of digital experiences we've crafted for world-class brands.
+            A collection of digital experiences we&rsquo;ve crafted for world-class brands.
           </p>
         </div>
 

@@ -8,7 +8,7 @@ export default function SEO() {
       <section className="px-6 py-16 max-w-7xl mx-auto">
         <div className="max-w-3xl">
           <h1 className="text-5xl font-extrabold text-slate-900 mb-6">SEO & Growth</h1>
-          <p className="text-xl text-slate-600 mb-10">We don't just build sites; we make sure they get found.</p>
+          <p className="text-xl text-slate-600 mb-10">We don&apos;t just build sites; we make sure they get found.</p>
           
           <div className="space-y-6">
             {[

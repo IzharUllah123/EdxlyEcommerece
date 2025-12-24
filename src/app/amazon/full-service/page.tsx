@@ -14,7 +14,7 @@ export default function AmazonFullService() {
         
         <div className="grid md:grid-cols-2 gap-12">
           <div className="bg-slate-900 rounded-[3rem] p-12 text-white">
-            <h2 className="text-3xl font-bold mb-8">What's Included?</h2>
+            <h2 className="text-3xl font-bold mb-8">What&rsquo;s Included?</h2>
             <ul className="space-y-6">
               {['Account Health Monitoring', 'FBA Inventory Management', 'Brand Registry Support', 'Case Log Resolution'].map(item => (
                 <li key={item} className="flex items-center gap-4 text-slate-400">

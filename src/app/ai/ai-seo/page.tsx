@@ -12,7 +12,7 @@ export default function AISEOPage() {
             Your online store no longer needs to guess what Google cares about; you will be ahead of it.
           </p>
           <p className="text-lg text-slate-600 leading-relaxed mb-10">
-            With AI SEO, we don't just optimize your store for today's search algorithms. We train your site to adapt to tomorrow. By ruling large language models, natural-language understanding, and predictive analytics, your brand becomes the answer people receive when they ask their next question to AI.
+            With AI SEO, we don&apos;t just optimize your store for today&rsquo;s search algorithms. We train your site to adapt to tomorrow. By ruling large language models, natural-language understanding, and predictive analytics, your brand becomes the answer people receive when they ask their next question to AI.
           </p>
           <button className="bg-[#1e4eb8] text-white px-10 py-4 rounded-full font-bold uppercase tracking-widest text-sm hover:scale-105 transition-all">
             Get a Free Quote
