@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, X, ChevronDown, Monitor, Smartphone, Search, Code, Globe, Zap, BrainCircuit, Sparkles, ShoppingBag } from "lucide-react";
+import { Menu, X, ChevronDown, Monitor, Smartphone, Search, Code, Globe, Zap, BrainCircuit, Sparkles, Star } from "lucide-react";
 
 const services = [
   { name: "Web Development", href: "/services/webdevelopment", icon: Code, desc: "Custom high-performance websites." },
@@ -44,6 +44,7 @@ const navLinks = [
   { name: "Portfolio", href: "/portfolio" },
   { name: "Pricing", href: "/pricing" },
   { name: "Contact", href: "/contact" },
+  { name: "Reviews", href: "/reviews", isReview: true },
 ];
 
 export default function Header() {
@@ -124,7 +125,7 @@ export default function Header() {
             </div>
           </div>
 
-          {/* Amazon Dropdown (New) */}
+          {/* Amazon Dropdown */}
           <div className="relative" onMouseEnter={() => setActiveDropdown('amazon')} onMouseLeave={() => setActiveDropdown(null)}>
             <button className="flex items-center gap-1 hover:text-black transition-colors py-2">
               Amazon <ChevronDown size={14} className={`transition-transform duration-200 ${activeDropdown === 'amazon' ? "rotate-180" : ""}`} />
@@ -144,7 +145,14 @@ export default function Header() {
           </div>
 
           {navLinks.map((link) => (
-            <Link key={link.name} href={link.href} className="hover:text-black transition-colors">{link.name}</Link>
+            <Link 
+              key={link.name} 
+              href={link.href} 
+              className="hover:text-black transition-colors flex items-center gap-1"
+            >
+              {link.isReview && <Star size={14} className="text-yellow-500 fill-yellow-500" />}
+              {link.name}
+            </Link>
           ))}
         </nav>
 
@@ -163,7 +171,7 @@ export default function Header() {
       {/* Mobile Menu Overlay */}
       <div className={`fixed inset-0 top-[65px] z-40 bg-white transition-transform duration-300 md:hidden overflow-y-auto ${isOpen ? "translate-x-0" : "translate-x-full"}`}>
         <nav className="flex flex-col p-6 space-y-4">
-          {/* Mobile Services */}
+          {/* Mobile Dropdowns (Services, Platforms, AI, Amazon omitted for brevity but remain the same) */}
           <button onClick={() => setActiveDropdown(activeDropdown === 'services' ? null : 'services')} className="flex items-center justify-between w-full text-lg font-semibold py-2 border-b">
             Services <ChevronDown size={20} className={activeDropdown === 'services' ? "rotate-180" : ""} />
           </button>
@@ -214,7 +222,13 @@ export default function Header() {
           )}
 
           {navLinks.map((link) => (
-            <Link key={link.name} href={link.href} onClick={() => setIsOpen(false)} className="text-lg font-semibold py-2 border-b">
+            <Link 
+              key={link.name} 
+              href={link.href} 
+              onClick={() => setIsOpen(false)} 
+              className="text-lg font-semibold py-2 border-b flex items-center gap-2"
+            >
+              {link.isReview && <Star size={18} className="text-yellow-500 fill-yellow-500" />}
               {link.name}
             </Link>
           ))}

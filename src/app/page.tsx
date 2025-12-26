@@ -1,8 +1,21 @@
+import Hero from '@/components/Hero'
+import ServiceGrid from "@/components/ServiceGrid";
+import WebsiteMakeover from '@/components/WebsiteMakeover'
+import WhyChooseUs from '@/components/WhyChooseUs'
+import FinalCTA from '@/components/FinalCTA'
+import TestimonialCarousel from '@/components/TestimonialCarousel'
+import AboutAndArticles from '@/components/AboutAndArticles'
+
 export default function Home() {
   return (
-    <main className="min-h-screen p-8">
-      <h1 className="text-4xl font-bold mb-8">Welcome to Our E-commerce Store</h1>
-      <p className="text-lg">Browse our products and start shopping!</p>
-    </main>
+    <>
+      <Hero />
+      <ServiceGrid />
+      <WebsiteMakeover />
+      <WhyChooseUs />
+      <FinalCTA />
+      <TestimonialCarousel />
+      <AboutAndArticles />
+    </>
   )
 }
