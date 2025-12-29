@@ -58,7 +58,7 @@ export default function CloudHosting() {
                   <div className="w-3 h-3 rounded-full bg-green-500"></div>
                 </div>
                 <code className="text-blue-300 text-sm">
-                  $ edxly deploy --prod <br/>
+                  $ Infynix deploy --prod <br/>
                   <span className="text-green-400">✔</span> Analyzing build...<br/>
                   <span className="text-green-400">✔</span> Uploading to Global Edge...<br/>
                   <span className="text-green-400">✔</span> Deployed to 24 regions.

@@ -1,3 +1,59 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  body {
+    /* Fixed: Using standard Tailwind v3 colors from your config */
+    @apply bg-white text-slate-900 overflow-x-hidden antialiased;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv02";
+  }
+
+  /* Smooth Scrolling for the whole page */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom Selection Color */
+  ::selection {
+    @apply bg-blue-600 text-white;
+  }
+}
+
+@layer components {
+  /* 3D Glassmorphism Card Utility */
+  .glass-card {
+    @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-xl;
+  }
+
+  /* Aggressive Heading Style for that premium agency look */
+  .heading-primary {
+    @apply text-5xl md:text-7xl font-black italic tracking-tighter uppercase leading-[0.9];
+  }
+}
+
+@layer utilities {
+  /* Perspective utility for 3D transforms */
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  /* Keyframe for the Infinite Logo Scroll */
+  @keyframes infinite-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-33.33%); }
+  }
+
+  .animate-infinite-scroll {
+    animation: infinite-scroll 40s linear infinite;
+  }
+
+  /* Custom Hide Scrollbar Utility */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}

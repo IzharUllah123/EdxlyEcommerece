@@ -80,7 +80,7 @@ export default function ContactPage() {
             </div>
 
             <div className="p-8 bg-blue-600 rounded-[2.5rem] text-white">
-              <h4 className="text-xl font-bold mb-4">Why choose Edxly?</h4>
+              <h4 className="text-xl font-bold mb-4">Why choose Infynex?</h4>
               <p className="text-blue-100 text-sm leading-relaxed mb-6">
                 Our team responds to all inquiries within 24 hours. Let&apos;s build something great together.
               </p>

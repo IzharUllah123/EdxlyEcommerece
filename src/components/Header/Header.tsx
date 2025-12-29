@@ -64,7 +64,7 @@ export default function Header() {
         
         {/* Logo */}
         <Link href="/" className="text-2xl font-bold tracking-tight text-black">
-          Edxly
+          Infynix
         </Link>
 
         {/* Desktop Navigation */}

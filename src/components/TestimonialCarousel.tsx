@@ -32,7 +32,7 @@ export default function TestimonialCarousel() {
   if (reviews.length === 0) return null;
 
   return (
-    <section className="bg-white py-24 px-6 overflow-hidden">
+    <section className="py-24 px-6 overflow-hidden">
       <div className="max-w-4xl mx-auto">
         {/* Header Text */}
         <div className="text-left mb-12">

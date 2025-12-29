@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 
 export default function AboutAndArticles() {
   return (
-    <section className="bg-white py-24 px-6 overflow-hidden">
+    <section className="py-24 px-6 overflow-hidden">
       <div className="max-w-7xl mx-auto space-y-32">
         
         {/* --- About Section --- */}
@@ -15,7 +15,7 @@ export default function AboutAndArticles() {
           <div className="space-y-8 order-2 lg:order-1">
             <h2 className="text-5xl md:text-6xl font-black italic tracking-tighter uppercase leading-none">
               About <br /> 
-              <span className="underline decoration-blue-600 underline-offset-8">Web Ecommerce Pros</span>
+              <span className="underline decoration-blue-600 underline-offset-8">Infynix Pros</span>
             </h2>
             <p className="text-slate-600 text-sm leading-relaxed max-w-xl">
               We are an approved vendor for all major ecommerce platforms, and that is a testament to our expertise! 
@@ -39,14 +39,14 @@ export default function AboutAndArticles() {
             <div className="relative rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white">
               <img 
                 src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" 
-                alt="Web Ecommerce Pros Team" 
+                alt="Infynix Pros Team" 
                 className="w-full h-full object-cover"
               />
               {/* Logo Overlay as seen in reference */}
               <div className="absolute top-8 left-8 bg-white/90 backdrop-blur p-4 rounded-2xl shadow-lg border border-slate-100">
                  <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white font-black italic text-xs">W</div>
-                    <span className="font-black italic text-xs tracking-tighter uppercase">Web Ecommerce Pros</span>
+                    <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white font-black italic text-xs">I</div>
+                    <span className="font-black italic text-xs tracking-tighter uppercase">Infynix Pros</span>
                  </div>
               </div>
             </div>
