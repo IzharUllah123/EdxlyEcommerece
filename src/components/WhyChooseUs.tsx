@@ -95,7 +95,7 @@ export default function WhyChooseUs() {
           <div className="relative w-64 h-64 flex items-center justify-center">
             <div className="absolute inset-0 border-[12px] border-blue-600 rounded-full opacity-10 animate-pulse" />
             <div className="absolute inset-4 border-2 border-dashed border-slate-300 rounded-full animate-[spin_10s_linear_infinite]" />
-            <span className="text-[120px] font-black italic text-blue-600 select-none">
+            <span className="text-4xl font-black italic text-blue-600 select-none">
               AI
             </span>
           </div>
@@ -108,7 +108,7 @@ export default function WhyChooseUs() {
               20+ Years of Unparalleled E-commerce Expertise
             </p>
 
-            <h2 className="text-5xl md:text-6xl font-black italic tracking-tighter uppercase mb-8 leading-none">
+            <h2 className="text-4xl md:text-4xl font-black italic tracking-tighter uppercase mb-8 leading-none">
               Why{" "}
               <span className="underline decoration-blue-600 underline-offset-[12px]">
               Infynix Pros?

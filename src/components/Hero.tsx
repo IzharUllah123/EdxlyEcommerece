@@ -12,20 +12,16 @@ const partners = [
   { name: "shopify", img: "https://cdn.worldvectorlogo.com/logos/shopify.svg" },
 ];
 
-
-
 export default function Hero() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <>
-      {/* Ensure the section is relative and has a z-index container */}
-      <section className="relative w-full pt-32 pb-16 px-6 md:px-12 overflow-hidden min-h-[90vh] flex flex-col justify-center">
-
-        {/* Content Container is at z-10 */}
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center relative z-10">
+      <section className="relative w-full pt-32 pb-16 px-6 md:px-12 overflow-hidden min-h-[90vh] flex flex-col justify-center bg-white">
+        
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center relative z-10 w-full">
           
-          {/* Left Content */}
+          {/* Left Content - Motion remains as you requested */}
           <motion.div 
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
@@ -34,12 +30,12 @@ export default function Hero() {
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100/50 border border-blue-200 mb-8">
               <span className="text-blue-600 text-[10px] md:text-xs font-black uppercase tracking-[0.2em] flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-blue-600 animate-ping"></span>
-                Ecommerce Agency
+                Digital Solutions Agency
               </span>
             </div>
 
-            <h1 className="text-4xl md:text-6xl font-black text-slate-900 leading-[0.9] mb-8 italic tracking-tighter uppercase">
-              Ecommerce <span className="text-blue-600 underline decoration-blue-200 underline-offset-8">Supercharged</span> by AI
+            <h1 className="text-4xl md:text-4xl font-black text-slate-900 leading-[0.9] mb-8 italic tracking-tighter uppercase">
+              Ecommerce <span className="text-blue-600 underline decoration-blue-200 underline-offset-8">Accelerated </span> by Intelligence
             </h1>
 
             <p className="text-lg text-slate-500 leading-relaxed max-w-xl mb-12 font-medium">
@@ -47,37 +43,35 @@ export default function Hero() {
               and more profitable ecommerce ecosystems.
             </p>
 
-            <div className="flex flex-wrap gap-4">
-              <motion.button 
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => setIsModalOpen(true)}
-                className="bg-[#1e4eb8] text-white px-10 py-5 rounded-full font-black text-xs uppercase tracking-widest flex items-center gap-3 shadow-xl shadow-blue-100"
-              >
-                Get a Free Consultation <ArrowRight size={18} />
-              </motion.button>
+           <div className="flex flex-wrap gap-4">
+  <motion.button 
+    whileHover={{ scale: 1.05 }}
+    whileTap={{ scale: 0.95 }}
+    onClick={() => setIsModalOpen(true)}
+    className="relative overflow-hidden bg-blue-600 text-white px-10 py-5 rounded-full font-black text-xs uppercase tracking-widest flex items-center gap-3 shadow-xl shadow-blue-100 group"
+  >
+    <span className="absolute inset-0 bg-white transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out"></span>
+    <span className="relative z-10 group-hover:text-blue-600 transition-colors duration-300 flex items-center gap-3">
+      Get a Free Consultation <ArrowRight size={18} />
+    </span>
+  </motion.button>
+</div>
+          </motion.div>
+
+          {/* Right Visuals - Static Image Change Only */}
+          <div className="relative flex justify-center lg:justify-end items-center">
+            {/* Fixed Image Container: No motion, proportional size */}
+            <div className="relative w-full max-w-[550px] aspect-[16/10] rounded-2xl overflow-hidden border-8 border-white shadow-2xl bg-slate-50">
+              <img 
+                src="Hero.png" 
+                alt="Digital Solutions Visual" 
+                className="w-full h-full object-cover"
+              />
             </div>
-          </motion.div>
-
-          {/* Right Visuals */}
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1 }}
-            className="relative"
-          >
-            {/* 3D Main Image */}
-           
-
-            {/* Background 3D Code Card */}
-            <motion.div 
-              animate={{ y: [0, 25, 0], x: [0, 10, 0] }}
-              transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -bottom-10 -left-10 w-2/3 rounded-[2rem] overflow-hidden border-8 border-white shadow-2xl hidden md:block z-0"
-            >
-              <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=400" alt="Code Development" className="w-full h-auto" />
-            </motion.div>
-          </motion.div>
+            
+            {/* Subtle background element to prevent "emptiness" without moving */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-blue-50 rounded-full blur-[100px] -z-10 opacity-50" />
+          </div>
         </div>
 
         {/* --- CONTINUOUS LOGO MARQUEE --- */}

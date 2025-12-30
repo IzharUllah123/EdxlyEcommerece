@@ -5,17 +5,17 @@ import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle } from "lucide-react";
 
 const leftColumnImages = [
-  "https://images.unsplash.com/photo-1522071823992-b48e163bc40e?auto=format&fit=crop&q=80&w=400",
-  "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=400",
-  "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=400",
-  "https://images.unsplash.com/photo-1522071823992-b48e163bc40e?auto=format&fit=crop&q=80&w=400", 
+  "1.jpg",
+  "2.jpg",
+  "3.jpg",
+  "4.jpg", 
 ];
 
 const rightColumnImages = [
-  "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=400",
-  "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80&w=400",
-  "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&q=80&w=400",
-  "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=400",
+  "5.jpg",
+  "6.jpg",
+  "7.jpg",
+  "8.jpg",
 ];
 
 const BackgroundAtmosphere = () => (
@@ -80,7 +80,7 @@ export default function WebsiteMakeover() {
             <span className="text-[10px] font-black uppercase tracking-[0.3em] italic">Visual Evolution</span>
           </div>
           
-          <h2 className="text-5xl md:text-8xl font-black italic tracking-tighter uppercase leading-[0.85] text-slate-900">
+          <h2 className="text-4xl md:text-4xl font-black italic tracking-tighter uppercase leading-[0.85] text-slate-900">
             Recent <br /> 
             <span className="text-blue-600 underline decoration-blue-100 underline-offset-[15px]">Projects</span>
           </h2>
@@ -127,7 +127,7 @@ export default function WebsiteMakeover() {
                 whileHover={{ scale: 0.98, rotateY: 5 }}
                 className="aspect-[3/4] w-full bg-white rounded-3xl overflow-hidden shadow-2xl border-4 border-white/50"
               >
-                <img src={img} alt="Project" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" />
+                <img src={img} alt="Project" className="w-full h-full object-cover transition-all duration-700" />
               </motion.div>
             ))}
           </motion.div>
@@ -144,7 +144,7 @@ export default function WebsiteMakeover() {
                 whileHover={{ scale: 0.98, rotateY: -5 }}
                 className="aspect-[3/4] w-full bg-white rounded-3xl overflow-hidden shadow-2xl border-4 border-white/50"
               >
-                <img src={img} alt="Project" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" />
+                <img src={img} alt="Project" className="w-full h-full object-cover   transition-all duration-700" />
               </motion.div>
             ))}
           </motion.div>

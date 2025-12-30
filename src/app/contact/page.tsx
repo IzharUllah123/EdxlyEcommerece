@@ -73,7 +73,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">Email</p>
-                    <p className="text-lg font-bold text-slate-900 italic">ixharkhan9@gmail.com</p>
+                    <p className="text-lg font-bold text-slate-900 italic">abc@gmail.com</p>
                   </div>
                 </div>
               </div>

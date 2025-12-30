@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
 import { Star, ChevronLeft, ChevronRight, User } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, Variants } from "framer-motion";
 
 export default function TestimonialCarousel() {
   const [reviews, setReviews] = useState<any[]>([]);
@@ -14,7 +14,7 @@ export default function TestimonialCarousel() {
       const { data } = await supabase
         .from('reviews')
         .select('*')
-        .eq('is_approved', true) // Only approved reviews
+        .eq('is_approved', true)
         .order('created_at', { ascending: false });
       if (data) setReviews(data);
     };
@@ -29,30 +29,53 @@ export default function TestimonialCarousel() {
     setCurrentIndex((prev) => (prev - 1 + reviews.length) % reviews.length);
   };
 
+  // Animation variants for the Section Header
+  const headerVariants: Variants = {
+    hidden: { opacity: 0, y: -30 },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { duration: 0.8, ease: "easeOut" } 
+    }
+  };
+
   if (reviews.length === 0) return null;
 
   return (
     <section className="py-24 px-6 overflow-hidden">
       <div className="max-w-4xl mx-auto">
-        {/* Header Text */}
-        <div className="text-left mb-12">
+        {/* Header Text - Drops from above on scroll */}
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={headerVariants}
+          className="text-center mb-12"
+        >
           <p className="text-[10px] font-black uppercase tracking-[0.2em] text-blue-600 mb-4">
             Customer Voices: Hear what they&apos;re saying
           </p>
-          <h2 className="text-5xl md:text-6xl font-black italic tracking-tighter uppercase leading-none">
+          <h2 className="text-4xl md:text-4xl  font-black italic tracking-tighter uppercase leading-none">
             Customer <span className="underline decoration-blue-600 underline-offset-8">Testimonials</span>
           </h2>
-        </div>
+        </motion.div>
 
-        {/* Carousel Container */}
-        <div className="relative bg-slate-50 rounded-[3rem] p-10 md:p-20 border border-slate-100 shadow-xl shadow-blue-50">
+        {/* Carousel Container - Drops from above on scroll */}
+        <motion.div 
+          initial={{ opacity: 0, y: -50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="relative bg-slate-50 rounded-[3rem] p-10 md:p-20 border border-slate-100 shadow-xl shadow-blue-50"
+        >
           <AnimatePresence mode="wait">
             <motion.div
               key={currentIndex}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.4 }}
+              // Content drops in from above when index changes
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 20 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
               className="flex flex-col items-center text-center space-y-6"
             >
               <div className="flex text-yellow-400 gap-1">
@@ -98,7 +121,7 @@ export default function TestimonialCarousel() {
               <ChevronRight size={24} />
             </button>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

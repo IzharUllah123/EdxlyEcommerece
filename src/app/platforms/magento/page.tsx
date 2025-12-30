@@ -57,7 +57,7 @@ export default function PlatformPage() {
       {/* Expertise Grid */}
       <section className="py-24 px-6 max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">Why Edxly for {platformInfo.name}?</h2>
+          <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">Why  for {platformInfo.name}?</h2>
           <p className="text-slate-500 max-w-xl mx-auto">We combine technical excellence with e-commerce psychology to build stores that actually sell.</p>
         </div>
 
