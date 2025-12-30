@@ -111,12 +111,12 @@ export default function WhyChooseUs() {
             <h2 className="text-4xl md:text-4xl font-black italic tracking-tighter uppercase mb-8 leading-none">
               Why{" "}
               <span className="underline decoration-blue-600 underline-offset-[12px]">
-              Infynix Pros?
+              Infynex Pros?
               </span>
             </h2>
 
             <p className="text-slate-500 text-sm leading-relaxed max-w-xl">
-              Infynix Pros offers a seamless, end-to-end solution for your
+              Infynex Pros offers a seamless, end-to-end solution for your
               online business needs. Our extensive experience enables us to stay
               ahead of industry trends.
             </p>

@@ -115,7 +115,7 @@ export default function AboutAndArticles() {
             >
               <img
                 src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80"
-                alt="Infynix Pros Team"
+                alt="Infynex Pros Team"
                 className="w-full h-full object-cover"
               />
 
@@ -126,7 +126,7 @@ export default function AboutAndArticles() {
                     I
                   </div>
                   <span className="font-black italic text-xs tracking-tighter uppercase">
-                    Infynix Pros
+                    Infynex 
                   </span>
                 </div>
               </div>

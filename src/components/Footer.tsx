@@ -26,10 +26,10 @@ export default function Footer() {
           <div className="space-y-6 sm:col-span-2 lg:col-span-1">
             <div className="flex items-center gap-2 justify-center sm:justify-start">
               <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center font-black italic text-xl">
-                W
+                I
               </div>
               <span className="text-xl font-black italic uppercase tracking-tighter">
-                Infynix Pros
+                Infynex
               </span>
             </div>
 
@@ -128,7 +128,7 @@ export default function Footer() {
 
               <div className="flex gap-2 text-slate-400 text-[10px]">
                 <Phone size={14} className="text-blue-500 shrink-0" />
-                <span>888-711-2347</span>
+                <span> 315-288-0008</span>
               </div>
             </div>
           </div>
@@ -160,7 +160,7 @@ export default function Footer() {
 
         {/* ================= BOTTOM ================= */}
         <div className="border-t border-white/5 pt-6 flex flex-col gap-4 items-center text-[10px] text-slate-500 font-bold uppercase tracking-widest text-center">
-          <p>© {currentYear} Infynix Pros</p>
+          <p>© {currentYear}  Pros</p>
           <div className="flex flex-wrap justify-center gap-4">
             {["About", "Reviews", "Privacy", "Shop", "Blog"].map((item) => (
               <Link key={item} href="#" className="hover:text-white">

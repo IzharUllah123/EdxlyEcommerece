@@ -58,7 +58,7 @@ Share your goals and discover how we build smart, scalable solutions.
           className="flex flex-col items-center gap-6 pt-4"
         >
           <Link 
-            href="tel:888-711-2347" 
+            href="tel:315-288-0008" 
             className="text-white text-2xl md:text-3xl font-black italic tracking-tighter hover:text-blue-500 transition-colors flex items-center gap-3 underline underline-offset-8 decoration-blue-500"
           >
             <Phone size={24} className="text-blue-500" />
