@@ -1,48 +1,52 @@
 "use client";
 
 import React, { useState } from "react";
-import { ArrowUpRight, ExternalLink } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
+// Updated Data: 'logo' is now active
 const projects = [
   {
-    title: "Eco-Friendly Lifestyle Store",
+    title: "High-Performance E-commerce Store",
+    client: "Ttelgo",
+    // Make sure to add your actual logo file path here if you have one
+     logo: "/LogoUpdated.png", 
     category: "Shopify",
-    image: "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&q=80",
-    tags: ["UI/UX", "Development", "SEO"]
+    link: "https://ttelgo.com",
+    description: "A comprehensive Shopify development project for Ttelgo. We built a scalable, mobile-first e-commerce experience focused on speed and conversion. The new design features intuitive navigation, a streamlined checkout process, and a modern aesthetic that perfectly aligns with the brand identity.",
+    image: "/ttelgo.png",
+    tags: ["Development", "Shopify", "UI/UX"]
+  },
+ {
+    title: "Modern Digital Experience",
+    client: "Spark",
+    // logo: "/spark-logo.png", // Uncomment and add your logo path here
+    category: "Web Development",
+    link: "https://spark-ten-chi.vercel.app/",
+    description: "A complete digital transformation for Spark. We built a dynamic, responsive website focused on user engagement and brand storytelling. The platform features high-performance animations, an optimized SEO structure, and a streamlined navigation system that significantly improved user retention and site speed.",
+    image: "/Spark.png", // Make sure to name your screenshot 'spark.png' and put it in the public folder
+    tags: ["React", "Performance", "UI/UX"]
   },
   {
     title: "Premium Tech Marketplace",
+    client: "TechFlow",
+    logo: "https://via.placeholder.com/150x40/ffffff/000000?text=TechFlow",
     category: "Amazon",
+    description: "A complete overhaul of the Amazon brand presence, including A+ content design, store optimization, and a strategic PPC campaign that increased ROI by 150% within the first quarter.",
     image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&q=80",
     tags: ["A+ Content", "PPC", "Ranking"]
   },
   {
-    title: "Healthcare SaaS Platform",
-    category: "Web Development",
-    image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80",
-    tags: ["React", "Cloud", "AI"]
-  },
-  {
     title: "Luxury Watch Brand",
+    client: "Chronos",
+    logo: "https://via.placeholder.com/150x40/ffffff/000000?text=Chronos",
     category: "Shopify",
+    description: "Designed a custom Shopify Liquid theme that emphasizes luxury and heritage. Implemented advanced filtering, high-resolution image galleries, and a seamless checkout experience.",
     image: "https://images.unsplash.com/photo-1524592094714-0f0654e20314?auto=format&fit=crop&q=80",
-    tags: ["Liquid", "Marketing"]
-  },
-  {
-    title: "Gourmet Food Subscription",
-    category: "Amazon",
-    image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80",
-    tags: ["FBA", "Brand Registry"]
-  },
-  {
-    title: "Fintech Dashboard",
-    category: "Web Development",
-    image: "https://images.unsplash.com/photo-1551288049-bbbda5366392?auto=format&fit=crop&q=80",
-    tags: ["Next.js", "Data Viz"]
+    tags: ["Liquid", "Marketing", "Branding"]
   }
 ];
 
-const categories = ["All", "Shopify", "Amazon", "Web Development"];
+
 
 export default function PortfolioPage() {
   const [filter, setFilter] = useState("All");
@@ -52,74 +56,88 @@ export default function PortfolioPage() {
     : projects.filter(p => p.category === filter);
 
   return (
-    <main className="min-h-screen pt-32 pb-20 px-6">
-      <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <h1 className="text-5xl md:text-7xl font-black text-slate-900 mb-6 italic tracking-tighter">
-            Our <span className="text-blue-600">Work</span>
+    <main className="min-h-screen bg-white pb-20">
+      
+      {/* --- HEADER SECTION --- */}
+      <div className="w-full bg-[#05111a] py-20 md:py-28 mb-20">
+        <div className="max-w-7xl mx-auto px-6 text-center">
+          <h1 className="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight uppercase">
+           <span className="text-blue-600">Our</span>  Portfolio
           </h1>
-          <p className="text-xl text-slate-500 max-w-2xl mx-auto">
-            A collection of digital experiences we&rsquo;ve crafted for world-class brands.
+          <p className="text-sm md:text-base font-bold text-white tracking-widest uppercase mb-2">
+            Explore our recent case studies and the results we have delivered for our clients.
           </p>
+          
         </div>
+      </div>
 
-        {/* Filters */}
-        <div className="flex flex-wrap justify-center gap-4 mb-16">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setFilter(cat)}
-              className={`px-8 py-3 rounded-full font-bold text-sm transition-all ${
-                filter === cat 
-                ? "bg-blue-600 text-white shadow-lg shadow-blue-200" 
-                : "bg-slate-100 text-slate-500 hover:bg-slate-200"
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
-        </div>
-
-        {/* Project Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {/* --- PROJECTS SECTION --- */}
+      <div className="max-w-7xl mx-auto px-6">
+        
+        <div className="flex flex-col gap-24 md:gap-32">
           {filteredProjects.map((project, index) => (
             <div 
               key={index} 
-              className="group relative bg-white rounded-[2.5rem] overflow-hidden border border-slate-100 hover:shadow-2xl transition-all duration-500"
+              className={`flex flex-col lg:flex-row items-center gap-12 lg:gap-20 ${
+                index % 2 === 1 ? 'lg:flex-row-reverse' : ''
+              }`}
             >
-              {/* Image Container */}
-              <div className="aspect-[4/3] overflow-hidden">
-                <img 
-                  src={project.image} 
-                  alt={project.title} 
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                />
+              
+              {/* Image Section */}
+              <div className="w-full lg:w-1/2 group">
+                <div className="relative overflow-hidden rounded-xl transition-transform duration-500 hover:scale-[1.02]">
+                  <img 
+                    src={project.image} 
+                    alt={project.title} 
+                    className="w-full h-auto object-cover shadow-2xl rounded-xl"
+                  />
+                  <div className="absolute -z-10 inset-0 bg-blue-50 transform translate-x-4 translate-y-4 rounded-xl" />
+                </div>
               </div>
 
-              {/* Content Overlay */}
-              <div className="p-8">
-                <div className="flex justify-between items-start mb-4">
-                  <div>
-                    <span className="text-blue-600 font-bold text-xs uppercase tracking-widest">{project.category}</span>
-                    <h3 className="text-2xl font-bold text-slate-900 mt-1">{project.title}</h3>
-                  </div>
-                  <div className="bg-slate-900 text-white p-3 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
-                    <ArrowUpRight size={20} />
-                  </div>
-                </div>
+              {/* Text Content Section */}
+              <div className="w-full lg:w-1/2 flex flex-col items-start text-left">
                 
-                <div className="flex flex-wrap gap-2">
-                  {project.tags.map(tag => (
-                    <span key={tag} className="px-3 py-1 bg-slate-50 border border-slate-100 rounded-lg text-[10px] font-bold text-slate-400 uppercase">
-                      {tag}
-                    </span>
-                  ))}
+                {/* --- LOGO LOGIC HERE --- */}
+                {project.logo ? (
+                  <img 
+                    src={project.logo} 
+                    alt={`${project.client} Logo`} 
+                    className="h-12 w-auto mb-6 object-contain opacity-90" 
+                  />
+                ) : (
+                  // Fallback to text if no logo exists
+                  <h3 className="text-blue-600 font-bold text-sm uppercase tracking-widest mb-3">
+                    {project.client}
+                  </h3>
+                )}
+                
+                <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6 leading-tight">
+                  {project.title}
+                </h2>
+                
+                <p className="text-slate-600 text-lg leading-relaxed mb-8">
+                  {project.description}
+                </p>
+
+                <div className="flex flex-wrap gap-2 mb-8">
+                   {project.tags.map(tag => (
+                     <span key={tag} className="px-3 py-1 bg-slate-100 text-slate-600 text-xs font-bold uppercase tracking-wider rounded">
+                       {tag}
+                     </span>
+                   ))}
                 </div>
+
+                <a 
+                  href={project.link}
+                  target="_blank"
+                  className="group flex items-center gap-2 text-blue-600 font-bold text-lg hover:text-blue-700 transition-colors"
+                >
+                  Visit Website 
+                  <ArrowUpRight className="w-5 h-5 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
+                </a>
               </div>
 
-              {/* Hover Link */}
-              <div className="absolute inset-0 bg-blue-600/0 group-hover:bg-blue-600/5 transition-colors cursor-pointer" />
             </div>
           ))}
         </div>
