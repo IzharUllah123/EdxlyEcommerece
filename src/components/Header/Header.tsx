@@ -78,7 +78,7 @@ export default function Header() {
           {/* Logo */}
        <Link href="/" className="group flex items-center gap-2 ">
   <img
-    src="/LOGOS.png"
+    src="/ecomlogo.png"
     alt="Logo"
     className=" h-8 w-auto object-contain"
   />
