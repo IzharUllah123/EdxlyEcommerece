@@ -78,7 +78,7 @@ const projects = [
     link: "https://www.kabulroyals.com/",
     description:
       "A leading logistics and supply chain services provider based in Afghanistan, offering end-to-end transportation, warehousing, customs clearance, and distribution solutions. The platform highlights secure warehousing, real-time tracking, global connectivity, and tailored logistics plans that help businesses optimize operations, reduce costs, and ensure timely delivery across domestic and international routes.",
-    image: "kabulRoyals.png",
+    image: "/kabulRoyals.png",
     tags: ["Supply Chain", "Transportation", "Warehousing"]
   },
   {
