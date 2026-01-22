@@ -76,12 +76,14 @@ export default function Header() {
         <div className="max-w-7xl mx-auto flex items-center justify-between px-6">
           
           {/* Logo */}
-         <Link href="/" className="group flex items-center gap-1">
-  <span className="text-2xl font-black tracking-tighter text-slate-900 uppercase italic">
-    Infy<span className="text-blue-600 not-italic">nex</span>
-  </span>
-  <div className="w-1.5 h-1.5 rounded-full bg-blue-600 mt-2 shadow-[0_0_10px_rgba(37,99,235,0.5)]"></div>
+       <Link href="/" className="group flex items-center gap-2 ">
+  <img
+    src="/LOGOS.png"
+    alt="Logo"
+    className=" h-8 w-auto object-contain"
+  />
 </Link>
+
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-600">
             

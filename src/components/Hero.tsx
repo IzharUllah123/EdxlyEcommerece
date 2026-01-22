@@ -30,7 +30,7 @@ export default function Hero() {
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100/50 border border-blue-200 mb-8">
               <span className="text-blue-600 text-[10px] md:text-xs font-black uppercase tracking-[0.2em] flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-blue-600 animate-ping"></span>
-                Digital Solutions Agency
+                Global Ecommerce Agency
               </span>
             </div>
 
