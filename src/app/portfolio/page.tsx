@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 
-// Updated Data: 'logo' supports image OR text
 const projects = [
   {
     title: "Creative Digital Agency Website",
@@ -83,71 +82,65 @@ const projects = [
     tags: ["Supply Chain", "Transportation", "Warehousing"]
   },
   {
-  title: "Personalized K-12 Online Learning Platform",
-  client: "Edxly FutureLearning",
-  logo: "EF",
-  category: "EdTech",
-  link: "https://edxly-futurelearning.vercel.app/",
-  description:
-    "An intuitive and engaging online learning platform tailored for K-12 students and lifelong learners. Edxly FutureLearning emphasizes personalized learning paths, structured course modules, and intuitive navigation that helps students explore subjects at their own pace, build foundational skills, and prepare for future academic and career success in a digital learning environment.",
-  image: "/edxlyfuturelearning.png",
-  tags: ["Online Learning", "Education", "Personalized Learning"]
-}
-
+    title: "Personalized K-12 Online Learning Platform",
+    client: "Edxly FutureLearning",
+    logo: "EF",
+    category: "EdTech",
+    link: "https://edxly-futurelearning.vercel.app/",
+    description:
+      "An intuitive and engaging online learning platform tailored for K-12 students and lifelong learners. Edxly FutureLearning emphasizes personalized learning paths, structured course modules, and intuitive navigation that helps students explore subjects at their own pace, build foundational skills, and prepare for future academic and career success in a digital learning environment.",
+    image: "/edxlyfuturelearning.png",
+    tags: ["Online Learning", "Education", "Personalized Learning"]
+  }
 ];
 
 export default function PortfolioPage() {
-  const [filter, setFilter] = useState("All");
+  const [filter] = useState("All");
 
   const filteredProjects =
-    filter === "All"
-      ? projects
-      : projects.filter(p => p.category === filter);
+    filter === "All" ? projects : projects.filter(p => p.category === filter);
 
   return (
     <main className="min-h-screen bg-white pb-20">
-      {/* --- HEADER SECTION --- */}
-     <div className="w-full bg-[#05111a] py-20 md:py-28 mb-20">
-  <div className="max-w-7xl mx-auto px-6 text-center">
-    <h1 className="text-4xl md:text-5xl font-black tracking-tighter text-white mb-6 uppercase">
-      <span className="">Our</span>
-      <span className="text-blue-600 italic ml-4">Port</span>
-      <span className="ml-2">folio</span>
-      <div className="w-1.5 h-1.5 rounded-full bg-blue-600 inline-block ml-2 mt-2 shadow-[0_0_10px_rgba(37,99,235,0.5)]"></div>
-    </h1>
-    <p className="text-sm md:text-base font-black text-white/80 tracking-wide uppercase italic mb-2">
-      Discover our latest projects and the creative results we’ve crafted for our clients.
-    </p>
-  </div>
-</div>
+      {/* HEADER */}
+      <div className="w-full bg-[#05111a] py-20 md:py-28 mb-20 animate-[fadeInUp_0.8s_ease-out]">
+        <div className="max-w-7xl mx-auto px-6 text-center">
+          <h1 className="text-4xl md:text-5xl font-black tracking-tighter text-white mb-6 uppercase">
+            <span>Our</span>
+            <span className="text-blue-600 italic ml-4">Port</span>
+            <span className="ml-2">folio</span>
+            <div className="w-1.5 h-1.5 rounded-full bg-blue-600 inline-block ml-2 mt-2 shadow-[0_0_10px_rgba(37,99,235,0.5)]"></div>
+          </h1>
+          <p className="text-sm md:text-base font-black text-white/80 tracking-wide uppercase italic mb-2">
+            Discover our latest projects and the creative results we’ve crafted for our clients.
+          </p>
+        </div>
+      </div>
 
-
-
-      {/* --- PROJECTS SECTION --- */}
+      {/* PROJECTS */}
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col gap-24 md:gap-32">
           {filteredProjects.map((project, index) => (
             <div
               key={index}
-              className={`flex flex-col lg:flex-row items-center gap-12 lg:gap-20 ${
+              className={`flex flex-col lg:flex-row items-center gap-12 lg:gap-20 transition-all duration-700 ease-out animate-[fadeInUp_0.9s_ease-out] ${
                 index % 2 === 1 ? "lg:flex-row-reverse" : ""
               }`}
             >
-              {/* Image Section */}
+              {/* Image */}
               <div className="w-full lg:w-1/2 group">
-                <div className="relative overflow-hidden rounded-xl transition-transform duration-500 hover:scale-[1.02]">
+                <div className="relative overflow-hidden rounded-xl transition-transform duration-700 hover:scale-[1.04]">
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-auto object-cover shadow-2xl rounded-xl"
+                    className="w-full h-auto object-cover shadow-2xl rounded-xl transition-transform duration-700"
                   />
                   <div className="absolute -z-10 inset-0 bg-blue-50 transform translate-x-4 translate-y-4 rounded-xl" />
                 </div>
               </div>
 
-              {/* Text Content Section */}
+              {/* Content */}
               <div className="w-full lg:w-1/2 flex flex-col items-start text-left">
-                {/* --- LOGO LOGIC --- */}
                 {project.logo.startsWith("/") ? (
                   <img
                     src={project.logo}
@@ -172,7 +165,7 @@ export default function PortfolioPage() {
                   {project.tags.map(tag => (
                     <span
                       key={tag}
-                      className="px-3 py-1 bg-slate-100 text-slate-600 text-xs font-bold uppercase tracking-wider rounded"
+                      className="px-3 py-1 bg-slate-100 text-slate-600 text-xs font-bold uppercase tracking-wider rounded transition-all duration-300 hover:bg-blue-600 hover:text-white"
                     >
                       {tag}
                     </span>
@@ -182,16 +175,30 @@ export default function PortfolioPage() {
                 <a
                   href={project.link}
                   target="_blank"
-                  className="group flex items-center gap-2 text-blue-600 font-bold text-lg hover:text-blue-700 transition-colors"
+                  className="group flex items-center gap-2 text-blue-600 font-bold text-lg hover:text-blue-700 transition-all duration-300"
                 >
                   Visit Website
-                  <ArrowUpRight className="w-5 h-5 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
+                  <ArrowUpRight className="w-5 h-5 transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1" />
                 </a>
               </div>
             </div>
           ))}
         </div>
       </div>
+
+      {/* Keyframes */}
+      <style jsx>{`
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(40px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `}</style>
     </main>
   );
 }
