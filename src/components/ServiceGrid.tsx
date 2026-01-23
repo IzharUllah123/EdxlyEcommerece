@@ -1,132 +1,210 @@
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState } from "react";
+import { motion, Variants } from "framer-motion";
 import { 
-  Search, PenTool, ArrowLeftRight, CheckCircle, 
-  Code, Megaphone, Share2, Settings, ShoppingCart 
+  Code, Megaphone, PenTool, Cpu, Search, Users, BarChart, Video, ArrowRight 
 } from "lucide-react";
+import ParticleBackground from "./ParticleBackground";
 
-const allServices = [
-  // Top Services (Formerly Cards)
+const services = [
   {
-    title: "AI-SEO / GEO",
-    desc: "AI search platforms are becoming the new way to discover products. We optimize your brand for generational and generative search.",
-    icon: Search,
-    link: "AI Optimization"
+    title: "Website Development",
+    desc: "We provide end to end web development services Put your business online and get more sales & leads.",
+    icon: Code,
   },
   {
-    title: "Design",
-    desc: "What makes any design an exceptional design is its uniqueness and originality. Grab your customer's attention with a custom theme.",
+    title: "Brand Launching & Opening",
+    desc: "A brand launch is the process of introducing a brand to the public, focusing on target audience and competition.",
+    icon: Megaphone,
+  },
+  {
+    title: "Branding & AI Content",
+    desc: "Give your brand a unique style and identity with the help of Pakistan's leading branding agency.",
     icon: PenTool,
-    link: "Custom Design"
   },
   {
-    title: "Migration",
-    desc: "If you have decided to migrate over to a better platform for your website, you are at the right place with years of experience.",
-    icon: ArrowLeftRight,
-    link: "Store Migration"
+    title: "Digital Marketing & Automation",
+    desc: "We provide you effective solutions to make you successful in the age of varied digital screens.",
+    icon: Cpu,
   },
-  // Sub Services
-  { title: "Development", desc: "Custom solutions for your ecommerce website. Our developers specialize in advanced store features and mobile app development.", icon: Code, link: "Custom Web Development" },
-  { title: "SEO", desc: "We use proven ecommerce SEO strategies to improve your rankings for your website, brand, and individual product pages.", icon: Search, link: "Ecommerce SEO" },
-  { title: "PPC", desc: "Certified partners building successful pay-per-click campaigns for businesses of all sizes to track and improve results.", icon: Megaphone, link: "Ecommerce PPC" },
-  { title: "Social Media", desc: "We take the headaches out of running social accounts. We post, respond, and engage with your customers personally.", icon: Share2 },
-  { title: "Maintenance", desc: "Your website needs consistent care to stay secure and smooth. We handle checks, updates, and backups so you don't have to.", icon: Settings },
-  { title: "Amazon", desc: "Selling on Amazon requires more than just great products. We optimize your listings and ads to reach more customers globally.", icon: ShoppingCart }
+  {
+    title: "SEO Content Writing",
+    desc: "Get Highly targeted traffic to your website. We have some of the best SEO Specialists in Pakistan.",
+    icon: Search,
+  },
+  {
+    title: "Talent Acq & Media Production",
+    desc: "Talent Acquisition is an ongoing strategy to find to Specialist, Leaders or future executives for your company.",
+    icon: Users,
+  },
+  {
+    title: "Digital Marketing",
+    desc: "Data driven campaigns to save your time and budgets hitting the customers fast and on target.",
+    icon: BarChart,
+  },
+  {
+    title: "Product video & Teaser's",
+    desc: "We promote your brands/business on a different channel reality show or programs. We have professional teams.",
+    icon: Video,
+  },
 ];
 
-const BackgroundAtmosphere = () => (
-  <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-    <motion.div
-      animate={{ x: [0, 80, 0], y: [0, 40, 0], scale: [1, 1.1, 1] }}
-      transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-      className="absolute top-0 right-0 w-[50%] h-[50%] bg-blue-600/10 blur-[120px] rounded-full"
-    />
-    <motion.div
-      animate={{ x: [0, -50, 0], y: [0, 80, 0] }}
-      transition={{ duration: 25, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-      className="absolute bottom-0 left-0 w-[40%] h-[40%] bg-indigo-600/10 blur-[100px] rounded-full"
-    />
-  </div>
-);
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1 },
+  },
+};
 
-export default function ServiceGrid() {
+const cardVariant: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    transition: { duration: 0.5, ease: "easeOut" } 
+  },
+};
+
+export default function Services() {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
+  // Helper to check if a specific index should be flipped
+  const getFlipState = (index: number) => {
+    if (hoveredIndex === null) return { isFlipped: false, rotation: 0 };
+
+    // 1. The card being hovered flips RIGHT (180deg)
+    if (index === hoveredIndex) {
+      return { isFlipped: true, rotation: 180 };
+    }
+
+    // 2. The Partner Card flips LEFT (-180deg)
+    // Rule: Flip Left neighbor. If no Left (index 0), flip Right neighbor.
+    const partnerIndex = hoveredIndex === 0 ? 1 : hoveredIndex - 1;
+
+    if (index === partnerIndex) {
+      return { isFlipped: true, rotation: -180 };
+    }
+
+    return { isFlipped: false, rotation: 0 };
+  };
+
   return (
-    <section className="relative bg-slate-900 py-24 px-6 text-white overflow-hidden min-h-screen">
-      <BackgroundAtmosphere />
+    <section className="relative w-full py-24 bg-black overflow-hidden">
+      
+      {/* Background */}
+      <div className="absolute inset-0 z-0 opacity-100 pointer-events-none">
+           <ParticleBackground />
+      </div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-red-900/10 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
         {/* Header */}
-        <motion.div 
-          initial={{ opacity: 0, y: -50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="flex flex-col md:flex-row gap-8 mb-20 border-l-2 border-blue-600 pl-8"
-        >
-          <div className="flex-1">
-             <div className="flex items-center gap-2 text-blue-400 mb-4">
-                <CheckCircle size={14} />
-                <span className="text-[10px] font-black uppercase tracking-widest italic">Customized Solutions</span>
-             </div>
-             <h2 className="text-4xl md:text-4xl font-black italic tracking-tighter uppercase leading-[0.9]">
-                Explore <br /> <span className="underline decoration-blue-500 underline-offset-[12px]">Our Services</span>
-             </h2>
-          </div>
-          <div className="flex-1 flex items-end">
-            <p className="text-slate-400 text-sm md:text-base leading-relaxed max-w-xl">
-              Unlock the full potential of your ecommerce venture with our comprehensive suite of services. 
-              From captivating design to industry-specific AI expertise.
+        <div className="text-center mb-16">
+          <motion.div
+             initial={{ opacity: 0, y: -20 }}
+             whileInView={{ opacity: 1, y: 0 }}
+             viewport={{ once: true }}
+             transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+              Our <span className="text-red-600">Services</span>
+            </h2>
+            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+              Special Solutions that Make Your Life Easier
             </p>
-          </div>
+          </motion.div>
+        </div>
+
+        {/* 3D Grid */}
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+        >
+          {services.map((service, index) => {
+            const { isFlipped, rotation } = getFlipState(index);
+
+            return (
+              <motion.div
+                key={index}
+                variants={cardVariant}
+                className="group relative h-[280px] perspective-1000" // perspective is needed for 3D
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
+              >
+                {/* Inner Card Container that Rotates */}
+                <motion.div
+                  className="w-full h-full relative preserve-3d transition-all duration-700 ease-in-out"
+                  animate={{ rotateY: rotation }}
+                  style={{ transformStyle: "preserve-3d" }}
+                >
+                  
+                  {/* === FRONT FACE (White Background) === */}
+                  <div className="absolute inset-0 backface-hidden bg-white rounded-xl p-6 flex flex-col items-center justify-center text-center shadow-xl border-b-4 border-red-600">
+                    
+                    {/* Icon Circle */}
+                    <div className="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mb-6">
+                      <service.icon size={32} className="text-red-600" />
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="text-xl font-extrabold text-slate-900 uppercase tracking-tight">
+                      {service.title}
+                    </h3>
+                    
+                    {/* Hint */}
+                    <p className="mt-4 text-xs text-gray-400 font-medium flex items-center gap-1">
+                      Hover to explore <ArrowRight size={12} />
+                    </p>
+                  </div>
+
+                  {/* === BACK FACE (White Background, Flipped 180) === */}
+                  <div 
+                    className="absolute inset-0 backface-hidden bg-red-600 rounded-xl p-6 flex flex-col items-center justify-center text-center shadow-xl"
+                    style={{ transform: "rotateY(180deg)" }}
+                  >
+                    {/* Icon Small */}
+                    <service.icon size={24} className="text-white/80 mb-4" />
+
+                    {/* Title Small */}
+                    <h4 className="text-lg font-bold text-white mb-3">
+                      {service.title}
+                    </h4>
+
+                    {/* Description */}
+                    <p className="text-white/90 text-sm leading-relaxed font-medium">
+                      {service.desc}
+                    </p>
+                    
+                    {/* Button Style Link */}
+                    <div className="mt-6 px-4 py-2 bg-white text-red-600 text-xs font-bold rounded-full uppercase tracking-widest">
+                      Learn More
+                    </div>
+                  </div>
+
+                </motion.div>
+              </motion.div>
+            );
+          })}
         </motion.div>
 
-        {/* Unified Service Grid */}
-       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 
-                gap-x-16 gap-y-20 
-                justify-items-center md:justify-items-start">
-  {allServices.map((item, i) => (
-    <motion.div 
-      key={i}
-      initial={{ opacity: 0, y: -40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: 0.1 * i, duration: 0.5, ease: "easeOut" }}
-      className="flex flex-col items-center md:items-start text-center md:text-left group"
-    >
-      {/* Icon */}
-      <div className="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center text-white mb-8 
-                      group-hover:bg-blue-600 group-hover:scale-110 transition-all duration-300">
-        <item.icon size={28} />
       </div>
 
-      {/* Title */}
-      <h4 className="text-2xl font-black italic uppercase mb-4 tracking-tighter">
-        {item.title}
-      </h4>
-
-      {/* Description */}
-      <p className="text-slate-400 text-sm leading-relaxed mb-6">
-        {item.desc}
-      </p>
-
-      {/* Link */}
-      {item.link && (
-        <button className="text-[10px] font-black uppercase tracking-widest flex items-center gap-2 
-                           text-blue-500 hover:text-white transition-all w-fit group/btn">
-          {item.link}
-          <span className="text-lg group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform duration-300">
-            ↗
-          </span>
-        </button>
-      )}
-    </motion.div>
-  ))}
-</div>
-
-      </div>
+      {/* Tailwind Utility for 3D needed? 
+          Note: Ensure you have 'perspective-1000', 'preserve-3d', and 'backface-hidden' 
+          utilities working. If not, standard Tailwind might need a plugin or custom CSS.
+          I used inline styles for 'preserve-3d' just in case. 
+      */}
+      <style jsx global>{`
+        .perspective-1000 { perspective: 1000px; }
+        .preserve-3d { transform-style: preserve-3d; }
+        .backface-hidden { backface-visibility: hidden; }
+      `}</style>
     </section>
   );
 }

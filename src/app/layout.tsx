@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer";
-import BackgroundParticles from "@/components/BackgroundParticles";
+import ParticleBackground from "@/components/ParticleBackground";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,7 +23,7 @@ export default function RootLayout({
         <Header />
 
         <main className="relative min-h-screen bg-slate-50 overflow-hidden">
-          <BackgroundParticles />
+          <ParticleBackground />
           {children}
         </main>
 

@@ -1,94 +1,142 @@
 "use client";
 
-import React, { useState } from "react";
-import { Cpu, ArrowRight } from "lucide-react";
-import { motion } from "framer-motion";
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence, Variants } from "framer-motion"; // 1. Added Variants import
 import ConsultationModal from "./ConsultationModal";
+import ParticleBackground from "./ParticleBackground";
 
-const partners = [
-  { name: "WORDPRESS", img: "https://cdn.worldvectorlogo.com/logos/wordpress-icon-1.svg" },
-  { name: "opencart", img: "https://cdn.worldvectorlogo.com/logos/opencart.svg" },
-  { name: "BIGCOMMERCE", img: "https://cdn.worldvectorlogo.com/logos/bigcommerce-1.svg" },
-  { name: "shopify", img: "https://cdn.worldvectorlogo.com/logos/shopify.svg" },
+const changingWords = [
+  "Web Development",
+  "Video Editing & AI Content",
+  "Online Education",
+  "Creative Marketing",
+  "Graphic Designing",
+  "Social Media Management",
+  "SEO Optimization",
+  "AI & Automation"
 ];
+
+// --- ANIMATION VARIANTS (Fixed Typing) ---
+
+// 2. Explicitly added ': Variants' type to all objects below
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.3,
+    },
+  },
+};
+
+const slideFromLeft: Variants = {
+  hidden: { opacity: 0, x: -600 },
+  visible: { 
+    opacity: 1, 
+    x: 0, 
+    transition: { duration: 0.8, ease: "easeOut" } 
+  },
+};
+
+const slideFromRight: Variants = {
+  hidden: { opacity: 0, x: 600 },
+  visible: { 
+    opacity: 1, 
+    x: 0, 
+    transition: { duration: 0.8, ease: "easeOut" } 
+  },
+};
 
 export default function Hero() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [currentWordIndex, setCurrentWordIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentWordIndex((prev) => (prev + 1) % changingWords.length);
+    }, 2500);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <>
-      <section className="relative w-full pt-32 pb-16 px-6 md:px-12 overflow-hidden min-h-[90vh] flex flex-col justify-center bg-white">
+      <section className="relative w-full h-screen min-h-[600px] flex flex-col justify-center items-center bg-black overflow-hidden">
         
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center relative z-10 w-full">
-          
-          {/* Left Content - Motion remains as you requested */}
-          <motion.div 
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100/50 border border-blue-200 mb-8">
-              <span className="text-blue-600 text-[10px] md:text-xs font-black uppercase tracking-[0.2em] flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-blue-600 animate-ping"></span>
-                Global Ecommerce Agency
-              </span>
-            </div>
-
-            <h1 className="text-4xl md:text-4xl font-black text-slate-900 leading-[0.9] mb-8 italic tracking-tighter uppercase">
-              Ecommerce <span className="text-blue-600 underline decoration-blue-200 underline-offset-8">Accelerated </span> by Intelligence
-            </h1>
-
-            <p className="text-lg text-slate-500 leading-relaxed max-w-xl mb-12 font-medium">
-              Uniting world-class design and AI intelligence to deliver faster, smarter, 
-              and more profitable ecommerce ecosystems.
-            </p>
-
-           <div className="flex flex-wrap gap-4">
-  <motion.button 
-    whileHover={{ scale: 1.05 }}
-    whileTap={{ scale: 0.95 }}
-    onClick={() => setIsModalOpen(true)}
-    className="relative overflow-hidden bg-blue-600 text-white px-10 py-5 rounded-full font-black text-xs uppercase tracking-widest flex items-center gap-3 shadow-xl shadow-blue-100 group"
-  >
-    <span className="absolute inset-0 bg-white transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out"></span>
-    <span className="relative z-10 group-hover:text-blue-600 transition-colors duration-300 flex items-center gap-3">
-      Get a Free Consultation <ArrowRight size={18} />
-    </span>
-  </motion.button>
-</div>
-          </motion.div>
-
-          {/* Right Visuals - Static Image Change Only */}
-          <div className="relative flex justify-center lg:justify-end items-center">
-            {/* Fixed Image Container: No motion, proportional size */}
-            <div className="relative w-full max-w-[550px] aspect-[16/10] rounded-2xl overflow-hidden border-8 border-white shadow-2xl bg-slate-50">
-              <img 
-                src="Hero.png" 
-                alt="Digital Solutions Visual" 
-                className="w-full h-full object-cover"
-              />
-            </div>
-            
-            {/* Subtle background element to prevent "emptiness" without moving */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-blue-50 rounded-full blur-[100px] -z-10 opacity-50" />
-          </div>
+        {/* --- BACKGROUND --- */}
+        <div className="absolute inset-0 z-0 opacity-300">
+             <ParticleBackground />
+        </div>
+        
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-red-900/10 rounded-full blur-[120px] pointer-events-none" />
+        
+        <div className="absolute bottom-0 left-0 w-full h-32 z-10 pointer-events-none">
+           <svg viewBox="0 0 1440 320" className="absolute bottom-0 w-full h-full" preserveAspectRatio="none">
+              <path fill="#ffffff" fillOpacity="1" d="M0,320 L0,100 L400,320 Z"></path>
+           </svg>
         </div>
 
-        {/* --- CONTINUOUS LOGO MARQUEE --- */}
-        <div className="w-full mt-32 border-t border-slate-200 pt-12 overflow-hidden relative z-10">
-          <div className="flex w-max items-center animate-infinite-scroll">
-            {[...partners, ...partners, ...partners].map((partner, index) => (
-              <div 
-                key={index} 
-                className="flex items-center justify-center gap-6 px-16 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-500 group"
+        {/* --- CONTENT --- */}
+        <div className="relative z-20 max-w-5xl mx-auto px-6 text-center mt-[-50px]">
+          
+          <motion.div 
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            
+            {/* 1. Subtitle - FROM LEFT */}
+            <motion.h3 variants={slideFromLeft} className="text-xl md:text-2xl font-medium mb-4">
+              <span className="text-red-600">Infynix International</span>
+              <span className="text-gray-300">, Think Growth—Think Infynix</span>
+            </motion.h3>
+
+            {/* 2. Main Title - FROM RIGHT */}
+            <motion.h1 variants={slideFromRight} className="text-5xl md:text-7xl font-bold text-white mb-2 tracking-tight">
+              Best Digital <span className="text-red-600">Services</span> Agency
+            </motion.h1>
+
+            {/* 3. Changing Words - FROM LEFT */}
+            <motion.div variants={slideFromLeft} className="h-16 mb-6 flex items-center justify-center overflow-hidden">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentWordIndex}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.5, ease: "easeInOut" }}
+                  className="text-2xl md:text-4xl font-semibold text-gray-200 uppercase tracking-wide"
+                >
+                  {changingWords[currentWordIndex]}
+                </motion.div>
+              </AnimatePresence>
+            </motion.div>
+
+            {/* 4. Description - FROM RIGHT */}
+            <motion.p variants={slideFromRight} className="text-gray-300 text-sm md:text-base leading-relaxed max-w-4xl mx-auto mb-10">
+              We deliver scalable, end-to-end business solutions across ecommerce design and development, 
+              maintenance and migration, SEO, PPC management, and social media strategy, 
+              Brand Launching & Opening Corporate Festive/Events, Talent Acquisition and Media Production 
+              —serving diverse industries and locations. A Complete business solutions!!
+            </motion.p>
+
+            {/* 5. Buttons - FROM LEFT */}
+            <motion.div variants={slideFromLeft} className="flex flex-wrap justify-center gap-6">
+              <button 
+                onClick={() => setIsModalOpen(true)}
+                className="bg-red-600 hover:bg-red-700 text-white text-lg font-semibold px-12 py-3 transition-all duration-300 shadow-lg shadow-red-900/30 rounded-md"
               >
-                <img src={partner.img} alt={partner.name} className="h-8 w-auto object-contain" />
-                <span className="font-black text-slate-900 text-xl uppercase italic tracking-tighter">
-                  {partner.name}
-                </span>
-              </div>
-            ))}
-          </div>
+                Contact Us
+              </button>
+              
+              <button 
+                className="bg-red-600 hover:bg-red-700 text-white text-lg font-semibold px-12 py-3 transition-all duration-300 shadow-lg shadow-red-900/30 rounded-md"
+              >
+                About Us
+              </button>
+            </motion.div>
+            
+          </motion.div>
+
         </div>
       </section>
 
